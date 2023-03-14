@@ -237,18 +237,12 @@ console.log(averageRating('Laptop')) // no rating
 console.log(averageRating('TV')) // 5
 // 4. Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
 function likeProduct(uid, pname) {
-  let productIndex = -1
-
-  products.forEach((item, index) => {
-    if (item.name === pname) productIndex = index
-  })
-
+  const productIndex = products.findIndex(product => product.name === pname)
   if (productIndex !== -1) {
-    let likes = products[productIndex].likes
-    let likeIndex = likes.indexOf(uid)
-    console.log(likeIndex)
-    if (likeIndex !== -1) {
-      products[productIndex].likes = likes.filter(item => item != uid)
+    const likes = products[productIndex].likes
+    const userLiked = likes.includes(uid)
+    if (userLiked) {
+      products[productIndex].likes = likes.filter(item => item !== uid)
     } else {
       products[productIndex].likes.push(uid)
     }
