@@ -147,17 +147,29 @@ const statistics = {
 
     return counts.sort((a, b) => Number(b[0]) - Number(a[0]))
   },
-  describe: function () {}
+  describe: function () {
+    console.log('Count:', statistics.count()) // 25
+    console.log('Sum: ', statistics.sum()) // 744
+    console.log('Min: ', statistics.min()) // 24
+    console.log('Max: ', statistics.max()) // 38
+    console.log('Range: ', statistics.range()) // 14
+    console.log('Mean: ', statistics.mean()) // 30
+    console.log('Median: ', statistics.median()) // 29
+    console.log('Mode: ', statistics.mode()) // {'mode': 26, 'count': 5}
+    console.log('Variance: ', statistics.var()) // 17.5
+    console.log('Standard Deviation: ', statistics.std()) // 4.2
+    console.log('Frequency Distribution: ', statistics.freqDist())
+    /**
+ * Frequency Distribution:  [
+  [ '20.0', 26 ], [ '16.0', 27 ],
+  [ '12.0', 32 ], [ '8.0', 31 ],
+  [ '8.0', 34 ],  [ '8.0', 37 ],
+  [ '8.0', 24 ],  [ '8.0', 33 ],
+  [ '4.0', 25 ],  [ '4.0', 38 ],
+  [ '4.0', 29 ]
+]
+ */
+  }
 }
 
-console.log('Count:', statistics.count()) // 25
-console.log('Sum: ', statistics.sum()) // 744
-console.log('Min: ', statistics.min()) // 24
-console.log('Max: ', statistics.max()) // 38
-console.log('Range: ', statistics.range()) // 14
-console.log('Mean: ', statistics.mean()) // 30
-console.log('Median: ', statistics.median()) // 29
-console.log('Mode: ', statistics.mode()) // {'mode': 26, 'count': 5}
-console.log('Variance: ', statistics.var()) // 17.5
-console.log('Standard Deviation: ', statistics.std()) // 4.2
-console.log('Frequency Distribution: ', statistics.freqDist())
+statistics.describe()
