@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. Create an object called personAccount. It has firstname, lastname, incomes, expenses properties and it has totalIncome, totalExpense, accountInfo,addIncome, addExpense and accountBalance methods. Incomes is a set of incomes and its description and expenses is also a set of expenses and its description.
+    const personAccount = {
+      firstName: 'Clarice',
+      lastName: 'Zheng',
+      incomes: [{
+          income: 5000,
+          description: 'Salary'
+        },
+        {
+          income: 6000,
+          description: 'Salary'
+        },
+        {
+          income: 7000,
+          description: 'Salary'
+        }
+      ],
+      expenses: [{
+          expense: 3000,
+          description: 'Shopping'
+        },
+        {
+          expense: 4000,
+          description: 'Shopping'
+        },
+        {
+          expense: 5000,
+          description: 'Shopping'
+        }
+      ],
+      totalIncome: function () {
+        let total = this.incomes.reduce((total, value) => {
+          return (total += value.income)
+        }, 0)
+        return total
+      },
+      totalExpense: function () {
+        let total = this.expenses.reduce((total, value) => {
+          return (total += value.expense)
+        }, 0)
+        return total
+      },
+      accountInfo: function () {
+        return {
+          firstName: this.firstName,
+          lastName: this.lastName
+        }
+      },
+      addIncome: function (obj) {
+        this.incomes.push(obj)
+        return this.incomes
+      },
+      addExpense: function (obj) {
+        this.expenses.push(obj)
+        return this.expenses
+      },
+      accountBalance: function () {
+        return this.totalIncome() - this.totalExpense()
+      }
+    }
+
+    localStorage.setItem('personAccount', JSON.stringify({
+      firstName: personAccount.firstName,
+      lastName: personAccount.lastName,
+      incomes: personAccount.incomes,
+      expenses: personAccount.expenses,
+      totalIncome: personAccount.totalIncome.toString(),
+      totalExpense: personAccount.totalExpense.toString(),
+      accountInfo: personAccount.accountInfo.toString(),
+      addIncome: personAccount.addIncome.toString(),
+      addExpense: personAccount.addExpense.toString(),
+      accountBalance: personAccount.accountBalance.toString()
+    }))
+
+
+    const personAccountFromStorage = JSON.parse(localStorage.getItem('personAccount'), (key, value) => {
+      if (['totalIncome', 'totalExpense', 'accountInfo', 'addIncome', 'addExpense', 'accountBalance'].indexOf(
+          key) !== -1) return eval(
+        '(' + value + ')')
+      return value
+    })
+    console.log(personAccountFromStorage.totalIncome()) // Output: 18000
+  </script>
+</body>
+
+</html>
