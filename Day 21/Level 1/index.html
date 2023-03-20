@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p id="p">1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <script>
+    // 1. Create an index.html file and put four p elements as above: Get the first paragraph by using document.querySelector(tagname) and tag name
+    console.log(document.querySelector('p'))
+    console.log(document.getElementsByTagName('p'));
+    // 2. Get each of the the paragraph using document.querySelector('#id') and by their id
+    console.log(document.querySelector('#p'));
+    console.log(document.getElementById('p'));
+    // 3. Get all the p as nodeList using document.querySelectorAll(tagname) and by their tag name
+    console.log(document.querySelectorAll('p'));
+    console.log(document.getElementsByTagName('p'));
+    // 4. Loop through the nodeList and get the text content of each paragraph
+    document.querySelectorAll('p').forEach(item => {
+      console.log(item.textContent);
+    })
+    // 5. Set a text content to paragraph the fourth paragraph
+    document.querySelectorAll('p').forEach(item => {
+      document.querySelectorAll('p')[document.querySelectorAll('p').length - 1].textContent = 'Change'
+    })
+    // 6. Set id and class attribute for all the paragraphs using different attribute setting methods
+    document.querySelectorAll('p').forEach((item, index) => {
+      item.setAttribute('class', 'setAttribute')
+      item.classList.add('classListAdd')
+      item.classList.remove('setAttribute')
+      item.id = `id${index + 1}`
+    })
+  </script>
+</body>
+
+</html>

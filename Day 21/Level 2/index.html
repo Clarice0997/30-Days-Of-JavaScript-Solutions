@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <script>
+    // 1. Change style of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)
+    let ps = document.getElementsByTagName('p')
+    ps[0].style.color = 'red'
+    ps[1].style.background = 'yellow'
+    ps[2].style.border = '1px solid red'
+    ps[3].style.fontSize = '20px'
+    // 2. Select all paragraphs and loop through each elements and give the first and third paragraph a color of green, and the second and the fourth paragraph a red color
+    ps[0].style.color = 'green'
+    ps[2].style.color = 'green'
+
+    ps[1].style.color = 'red'
+    ps[3].style.color = 'red'
+    // 3. Set text content, id and class to each paragraph
+    ps[0].id = 'Text1'
+    ps[0].class = 'Text1'
+    ps[0].textContent = 'Text1'
+
+    ps[1].id = 'Text2'
+    ps[1].class = 'Text2'
+    ps[1].textContent = 'Text2'
+
+    ps[2].id = 'Text3'
+    ps[2].class = 'Text3'
+    ps[2].textContent = 'Text3'
+
+    ps[3].id = 'Text4'
+    ps[3].class = 'Text4'
+    ps[3].textContent = 'Text4'
+  </script>
+</body>
+
+</html>
